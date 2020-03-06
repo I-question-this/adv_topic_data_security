@@ -57,8 +57,6 @@ def parseOpts(argv):
                         help ='dataType to use, onlyOrder/both')
     parser.add_argument('-o', '--output', default='',
                         help ='output file name')
-    parser.add_argument('-m', '--mode', default='',
-                        help ='output file name')
     parser.add_argument('-v', '--verbose', action='store_true',
                         help ='verbose or not')
     parser.add_argument('-t', '--testOnly', default='',
