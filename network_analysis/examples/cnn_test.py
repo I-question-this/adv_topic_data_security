@@ -5,19 +5,32 @@ import argparse
 import numpy as np
 import pandas as pd
 
+from keras.utils import np_utils
 sys.path.append('src')
 import cnn
 
 
+def sepDataLabel(dataLabel):
+    data, label = [], []
+    for i in range(dataLabel.shape[0]):
+        sample = list(dataLabel[i, :])
+        one_data = sample[1:-1]
+        one_label = sample[-1]
+        data.append(one_data)
+        label.append(one_label)
+
+    return data, label
+
 def readCSVFile(fpath):
     allData = pd.read_csv(fpath, sep='\t')
-    data = allData['data'].values
-    label = allData['label'].values
+    allData = allData.to_numpy()
+    data, label = sepDataLabel(allData)
+    data = np.array(data)
     return data, label
 
 def loadData(opts, PARAMS):
-    X_train, y_train = readCSVFile(opts.train)
-    X_test, y_test = readCSVFile(opts.test)
+    X_train_raw, y_train = readCSVFile(opts.train)
+    X_test_raw, y_test = readCSVFile(opts.test)
 
     NUM_CLASS = len(set(y_test))
     X_train = X_train_raw.reshape(X_train_raw.shape[0], X_train_raw.shape[1], 1)
@@ -28,7 +41,7 @@ def loadData(opts, PARAMS):
     return X_train, y_train, X_test, y_test, NUM_CLASS
 
 def loadTestData(opts, params):
-    X_test, y_test = readCSVFile(opts.test)
+    X_test_raw, y_test = readCSVFile(opts.test)
 
     NUM_CLASS = len(set(y_test))
     X_test = X_test_raw.reshape(X_test.shape[0], X_test.shape[1], 1)
@@ -51,8 +64,10 @@ def main(opts):
 
 def parseOpts(argv):
     parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--input',
-                        help ='file path of config file')
+    parser.add_argument('-t1', '--train',
+                        help ='file path of train data file')
+    parser.add_argument('-t2', '--test',
+                        help ='file path of test data file')
     parser.add_argument('-d', '--dataType',
                         help ='dataType to use, onlyOrder/both')
     parser.add_argument('-o', '--output', default='',

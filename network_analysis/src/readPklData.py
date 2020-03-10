@@ -52,18 +52,33 @@ def loadData(dataRoot, trace_length):
     return X_train, y_train, X_test, y_test
 
 
+def mergeDataLabel(data, label):
+    assert(data.shape[0] == len(label))
+    rtn = []
+    for i in range(len(label)):
+        sample = list(data[i,:])
+        y = int(label[i])
+        sample.append(y)
+        rtn.append(sample)
+
+    return np.array(rtn)
+
+
 def main(opts):
-    trace_length = 3000
+    trace_length = 2000
     X_train, y_train, X_test, y_test = loadData(opts.droot, trace_length)
 
-    trainData = pd.DataFrame({'data':list(X_train), 'label':list(y_train)})
-    testData = pd.DataFrame({'data':list(X_test), 'label':list(y_test)})
+    trainData = mergeDataLabel(X_train, y_train)
+    testData = mergeDataLabel(X_test, y_test)
 
-    trainFile = os.path.join(opts.output, 'traffic_trace_train.csv')
-    testFile = os.path.join(opts.output, 'traffic_trace_test.csv')
+    trainData = pd.DataFrame(trainData)
+    testData = pd.DataFrame(testData)
 
-    trainData.to_csv(trainFile, sep='\t')
-    testData.to_csv(testFile, sep='\t')
+    trainDataFile = os.path.join(opts.output, 'traffic_trace_train.csv')
+    testDataFile = os.path.join(opts.output, 'traffic_trace_test.csv')
+
+    trainData.to_csv(trainDataFile, sep='\t')
+    testData.to_csv(testDataFile, sep='\t')
 
 
 def parseOpts(argv):

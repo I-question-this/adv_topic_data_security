@@ -45,7 +45,7 @@ def generate_default_params():
             'drop_rate4': 0.5,
             'decay': 0.1,
             'batch_size': 70,
-            'data_dim': 600,
+            'data_dim': 2000,
             'epochs': 500,
             'conv1': 64,
             'conv2': 128,
