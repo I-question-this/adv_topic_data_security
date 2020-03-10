@@ -22,5 +22,11 @@ if you want to run the example code, you can first type:
 then the screen will print out help msg
 
 when you run the code, you can use the data in the data folder,
-you may also use the data of yourself, however, you will need to change
-the data format so the data will compatiable to the test code.
+you may also use the data of yourself, however, you will need to
+change the data format so the data will compatiable to the test
+code.
+
+########## Mar 10th, 2020 #####################
+Thanks for the suggestions from Tyler, we add a requirement.txt file
+and add shebang for each *.py file. So, before run the code, we re-com
+mand you to check the python package version in the requirement.txt

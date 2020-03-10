@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.6
 import os
 import sys
 import argparse
@@ -68,8 +69,6 @@ def parseOpts(argv):
                         help ='file path of train data file')
     parser.add_argument('-t2', '--test',
                         help ='file path of test data file')
-    parser.add_argument('-d', '--dataType',
-                        help ='dataType to use, onlyOrder/both')
     parser.add_argument('-o', '--output', default='',
                         help ='output file name')
     parser.add_argument('-v', '--verbose', action='store_true',
