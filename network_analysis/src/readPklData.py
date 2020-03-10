@@ -1,5 +1,4 @@
-#encoding=utf-8
-#!/usr/bin/python
+#!/usr/env/bin python3.6
 
 import os
 import sys

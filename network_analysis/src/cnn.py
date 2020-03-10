@@ -1,4 +1,5 @@
-#encoding=utf-8
+#!/usr/env/bin python3.6
+#
 # Copyright@Chenggang Wang
 # 1277223029@qq.com
 # All right reserved
