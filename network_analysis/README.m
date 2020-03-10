@@ -3,14 +3,17 @@
 # Example for class advanced topic for data security
 #
 # Boyang Wang
-# Chenggang Wang
+#
+# Chenggang Wang, wang2c9@mail.uc.edu
 #
 # 2020 Spring
 #
 #########################################################
 
 
-The data is stored in the data folder
+The data is stored in the data folder. For now, the data is stored
+in zip file format, because git have a limit of 100MB, so if you
+want to use the data, you need to unzip those file first.
 
 And there is examples in the example folder
 
